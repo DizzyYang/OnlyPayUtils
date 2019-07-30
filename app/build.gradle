@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 160
-        versionName "1.6.0"
+        versionCode 161
+        versionName "1.6.1"
     }
     buildTypes {
         release {
@@ -21,8 +21,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.lzy.net:okgo:3.0.4'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.lzy.net:okgo:3.0.4'
 }
 
 task sourcesJar(type: Jar) {
