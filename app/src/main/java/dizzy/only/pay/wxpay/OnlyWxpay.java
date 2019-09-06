@@ -14,8 +14,8 @@ import org.json.JSONObject;
  */
 public class OnlyWxpay {
 
-    private static final String WXPAY_JSON = "支付数据解析异常";
-    private static final String WXPAY_ERROR = "支付失败";
+    public static final String WXPAY_JSON = "支付数据解析异常";
+    public static final String WXPAY_ERROR = "支付失败";
     private static OnlyWxpay onlyWxpay;
     private IWXAPI mIwxapi;
     private OnWxpayListener mOnWxpayListener;
@@ -64,6 +64,9 @@ public class OnlyWxpay {
             case -1:
                 mOnWxpayListener.onError(WXPAY_ERROR);
                 break;
+            case -2:
+                mOnWxpayListener.onCancel();
+                break;
         }
     }
 
@@ -71,6 +74,8 @@ public class OnlyWxpay {
         void onSuccess();
 
         void onError(String error);
+
+        void onCancel();
     }
 
 }

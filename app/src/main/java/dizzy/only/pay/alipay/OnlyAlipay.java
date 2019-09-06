@@ -13,9 +13,9 @@ import java.util.Map;
  */
 public class OnlyAlipay {
 
-    private static final String ALIPAY_NULL = "支付宝返回值异常";
-    private static final String ALIPAY_WAIT = "正在处理中，支付结果未知，请联系客服";
-    private static final String ALIPAY_ERROR = "支付失败";
+    public static final String ALIPAY_NULL = "支付宝返回值异常";
+    public static final String ALIPAY_WAIT = "正在处理中，支付结果未知，请联系客服";
+    public static final String ALIPAY_ERROR = "支付失败";
     private static OnlyAlipay onlyAlipay;
 
     public static OnlyAlipay getInstance() {
@@ -55,6 +55,8 @@ public class OnlyAlipay {
         }
         if (TextUtils.equals(status, "9000")) {
             onAlipayListener.onSuccess();
+        }else if(TextUtils.equals(status, "6001")){
+            onAlipayListener.onCancel();
         } else if (TextUtils.equals(status, "8000") || TextUtils.equals(status, "6004")) {
             onAlipayListener.onError(ALIPAY_WAIT);
         } else {
@@ -66,6 +68,8 @@ public class OnlyAlipay {
         void onSuccess();
 
         void onError(String error);
+
+        void onCancel();
     }
 
 }
