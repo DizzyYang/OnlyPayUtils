@@ -17,6 +17,8 @@
 #alipay
 -dontwarn com.alipay.**
 -keep class com.alipay.** {*;}
+-dontwarn org.json.alipay.**
+-keep class org.json.alipay.** {*;}
 
 #wxpay
 -dontwarn com.tencent.**
